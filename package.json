@@ -1,0 +1,48 @@
+{
+  "name": "garmentSite",
+  "version": "1.0.0",
+  "description": "garment site",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/kikimetal/garment.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "browserify": "browserify ./src/dest/entry.js -o ./bundle.js",
+    "babel": "babel src/es6 --out-dir src/dest"
+  },
+  "keywords": [],
+  "author": "kikimetal",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.4.0",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-concat-css": "^2.3.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "lodash": "^4.17.4",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-dom-factories": "^1.0.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {},
+  "babel": {
+    "presets": [
+      "latest",
+      "react"
+    ],
+    "plugins": [
+      "transform-react-jsx"
+    ]
+  }
+}
