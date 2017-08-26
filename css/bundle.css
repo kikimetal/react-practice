@@ -1,20 +1,3 @@
-body {
-  background: pink;
-  margin: 0;
-  padding: 0.8rem;
-}
+body{background:pink;margin:0;padding:0.8rem}body #myapp{background:white;padding:0.8rem}
 
-body #myapp {
-  background: white;
-  padding: 0.8rem;
-}
-body {
-  background: pink;
-  margin: 0;
-  padding: 0.8rem;
-}
-
-body #myapp-2 {
-  background: white;
-  padding: 0.8rem;
-}
+body{background:pink;margin:0;padding:0.8rem}body #myapp-2{background:white;padding:0.8rem}
