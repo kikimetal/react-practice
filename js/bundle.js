@@ -373,7 +373,7 @@ var MyApp = function (_React$Component) {
                 ),
                 _react2.default.createElement(_myTextarea2.default, null),
                 _react2.default.createElement(_hello2.default, { style: { background: "white" } }),
-                _react2.default.createElement(_hello2.default, { style: {} }),
+                _react2.default.createElement(_hello2.default, { style: { margin: "1em" } }),
                 _react2.default.createElement(_excel2.default, null)
             );
         }

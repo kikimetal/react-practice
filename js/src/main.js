@@ -25,7 +25,7 @@ class MyApp extends React.Component{
                 <h1>GARMENT test</h1>
                 <MyTextarea />
                 <Hello style={{background: "white"}} />
-                <Hello style={{}} />
+                <Hello style={{margin: "1em"}} />
                 <Excel />
             </div>
         );
