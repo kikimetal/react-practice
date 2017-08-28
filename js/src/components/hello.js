@@ -16,19 +16,32 @@ HelloJSX.defaultProps = {
     h1text: "JSX component",
 }
 
+const mergeStyles = (defaultStyle, overrideStyle) => overrideStyle ? Object.assign(defaultStyle, overrideStyle) : defaultStyle;
+
 export default class Hello extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            name: props.name,
-            age: props.age,
-            job: props.job,
+            name: this.props.name,
+            age: this.props.age,
+            job: this.props.job,
         };
+
+    }
+    componentDidMount(){
+        console.log(this.props);
     }
     render(){
+        const style = {
+            background: "thistle",
+            textDecoration: "underline",
+            color: "dimgrey",
+        };
+        mergeStyles(style, this.props.style);
+        // console.log(style);
         return (
-            <div>
-                <HelloJSX h1text={"初めてのJSX"} />
+            <div style={style}>
+                <HelloJSX h1text={"JSX^-^"} />
                 <p><input defaultValue={"hello" + this.state.name} /></p>
                 <p>age: <em>{this.state.age}</em></p>
                 <p>job: <em>{this.state.job}</em></p>

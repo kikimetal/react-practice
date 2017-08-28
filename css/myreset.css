@@ -1,0 +1,35 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-size: inherit;
+}
+h1, h2, h3, h4, h5, h6, strong, b{ font-weight: bold; }
+h1{ font-size: 160%; }
+h2{ font-size: 140%; }
+h3{ font-size: 120%; }
+
+:root{
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+        -ms-tap-highlight-color:rgba(0,0,0,0);
+            tap-highlight-color:rgba(0,0,0,0);
+
+    -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+
+    background-color: #faf6ec;
+    color: #584b4f;
+    font-family: "Helvetica Neue", Helvetica, arial, freesans, clean, sans-serif;
+    font-size: 16px;
+    line-height: 1;
+    vertical-align: baseline;
+}
+ul{
+    list-style: none;
+}
+ul.stuffed{
+    font-size: 0; /* li以下で横並びで余計な余白を削除のため */
+}
+ul.stuffed li{
+    font-size: 1rem;
+}

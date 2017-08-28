@@ -140,6 +140,10 @@ HelloJSX.defaultProps = {
     h1text: "JSX component"
 };
 
+var mergeStyles = function mergeStyles(defaultStyle, overrideStyle) {
+    return overrideStyle ? Object.assign(defaultStyle, overrideStyle) : defaultStyle;
+};
+
 var Hello = function (_React$Component2) {
     _inherits(Hello, _React$Component2);
 
@@ -149,20 +153,33 @@ var Hello = function (_React$Component2) {
         var _this2 = _possibleConstructorReturn(this, (Hello.__proto__ || Object.getPrototypeOf(Hello)).call(this, props));
 
         _this2.state = {
-            name: props.name,
-            age: props.age,
-            job: props.job
+            name: _this2.props.name,
+            age: _this2.props.age,
+            job: _this2.props.job
         };
+
         return _this2;
     }
 
     _createClass(Hello, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            console.log(this.props);
+        }
+    }, {
         key: "render",
         value: function render() {
+            var style = {
+                background: "thistle",
+                textDecoration: "underline",
+                color: "dimgrey"
+            };
+            mergeStyles(style, this.props.style);
+            // console.log(style);
             return _react2.default.createElement(
                 "div",
-                null,
-                _react2.default.createElement(HelloJSX, { h1text: "初めてのJSX" }),
+                { style: style },
+                _react2.default.createElement(HelloJSX, { h1text: "JSX^-^" }),
                 _react2.default.createElement(
                     "p",
                     null,
@@ -326,14 +343,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var style = {
-    myapp: {
-        fontFamily: "verdana",
-        textAlign: "center",
-        color: "steelblue"
-    }
-};
-
 var MyApp = function (_React$Component) {
     _inherits(MyApp, _React$Component);
 
@@ -346,16 +355,25 @@ var MyApp = function (_React$Component) {
     _createClass(MyApp, [{
         key: "render",
         value: function render() {
+            var style = {
+                background: "pink",
+                fontFamily: "verdana",
+                textAlign: "center",
+                color: "steelblue",
+                padding: "0.8rem",
+                lineHeight: "1.6"
+            };
             return _react2.default.createElement(
                 "div",
-                { style: style.myapp },
+                { style: style },
                 _react2.default.createElement(
                     "h1",
                     null,
                     "GARMENT test"
                 ),
                 _react2.default.createElement(_myTextarea2.default, null),
-                _react2.default.createElement(_hello2.default, null),
+                _react2.default.createElement(_hello2.default, { style: { background: "white" } }),
+                _react2.default.createElement(_hello2.default, { style: {} }),
                 _react2.default.createElement(_excel2.default, null)
             );
         }

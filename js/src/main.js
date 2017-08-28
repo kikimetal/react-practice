@@ -7,25 +7,25 @@ import MyTextarea from "./components/my-textarea"
 import Hello from "./components/hello"
 import Excel from "./components/excel"
 
-
-const style = {
-    myapp: {
-        fontFamily: "verdana",
-        textAlign: "center",
-        color: "steelblue",
-    },
-}
-
 class MyApp extends React.Component{
     constructor(props){
         super(props);
     }
     render(){
+        let style = {
+            background: "pink",
+            fontFamily: "verdana",
+            textAlign: "center",
+            color: "steelblue",
+            padding: "0.8rem",
+            lineHeight: "1.6",
+        };
         return (
-            <div style={style.myapp}>
+            <div style={style}>
                 <h1>GARMENT test</h1>
                 <MyTextarea />
-                <Hello />
+                <Hello style={{background: "white"}} />
+                <Hello style={{}} />
                 <Excel />
             </div>
         );

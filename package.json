@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "garment site",
   "repository": {
-      "type": "git",
-      "url": "https://github.com/kikimetal/garment.git"
+    "type": "git",
+    "url": "https://github.com/kikimetal/garment.git"
   },
   "main": "index.js",
   "scripts": {
