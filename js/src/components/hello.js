@@ -1,6 +1,6 @@
-import React from "react";
-import DOM from "react-dom-factories";
-import ReactPropTypes from "prop-types";
+import React from "react"
+import DOM from "react-dom-factories"
+import ReactPropTypes from "prop-types"
 
 class HelloJSX extends React.Component{
     constructor(props){
@@ -21,12 +21,17 @@ const mergeStyles = (defaultStyle, overrideStyle) => overrideStyle ? Object.assi
 export default class Hello extends React.Component{
     constructor(props){
         super(props);
+        // const style = {
+        //     background: "thistle",
+        //     textDecoration: "underline",
+        //     color: "dimgrey",
+        // };
+        // mergeStyles(style, this.props.style);
         this.state = {
             name: this.props.name,
             age: this.props.age,
             job: this.props.job,
         };
-
     }
     componentDidMount(){
         console.log(this.props);
@@ -42,7 +47,7 @@ export default class Hello extends React.Component{
         return (
             <div style={style}>
                 <HelloJSX h1text={"JSX^-^"} />
-                <p><input defaultValue={"hello" + this.state.name} /></p>
+                <p><input defaultValue={"hello " + this.state.name} /></p>
                 <p>age: <em>{this.state.age}</em></p>
                 <p>job: <em>{this.state.job}</em></p>
             </div>

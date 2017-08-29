@@ -35,7 +35,7 @@ gulp.task("css-min", ()=>{
 gulp.task("browserify", ()=>{
     return browserify({
         entries: [`./js/src/${rootJsFileName}`],
-        // debug: true,
+        debug: true,
     })
         .transform(babelify, {
             presets: ["latest", "react"],
@@ -64,15 +64,6 @@ gulp.task("apply-prod-environment", ()=>{
     return process.env.NODE_ENV = "production";
 });
 
-gulp.task("browserify-env-production",
-    [
-        "apply-prod-environment",
-        "browserify-min",
-    ],()=>{
-        return;
-    }
-);
-
 gulp.task("clean", (callback)=>{
     return del([
         "./dist/**/*",
@@ -83,8 +74,8 @@ gulp.task("dist", // deployment
     [
         "clean",
         "apply-prod-environment",
-        "browserify-min",
         "css-min",
+        "browserify-min",
     ], ()=>{
         gulp.src("./index.html")
             .pipe(gulp.dest("./dist/"));
@@ -96,12 +87,11 @@ gulp.task("dist", // deployment
 );
 
 gulp.task("watch", ["default"], ()=>{
-    gulp.watch("./js/src/**/*.js", [
-        // "apply-prod-environment",
-        "browserify",
-    ]);
     gulp.watch("./css/**/*.sass", [
         "css",
+    ]);
+    gulp.watch("./js/src/**/*.js", [
+        "browserify",
     ]);
 });
 
