@@ -47,11 +47,15 @@ export default class Excel extends React.Component{
         });
     }
     _showEditer(e){
+        if (e.target.tagName === "INPUT") return;
+        // console.log("click", e.target.tagName === "INPUT");
+        // if(this.state.edit && this.state.edit.row === newEdit.row && this.state.edit.cell === newEdit.cell) return;
+        const newEdit = {
+            row: parseInt(e.target.dataset.row, 10),
+            cell: e.target.cellIndex,
+        };
         this.setState({
-            edit: {
-                row: parseInt(e.target.dataset.row, 10),
-                cell: e.target.cellIndex,
-            },
+            edit: newEdit,
         });
         // console.log(e.target.dataset.row, e.target.cellIndex);
     }
@@ -74,6 +78,7 @@ export default class Excel extends React.Component{
                         border: "1px solid grey",
                         padding: "0.5rem",
                         margin: "0 auto",
+                        maxWidth: "100%",
                     },
                 },
                 DOM.thead(
@@ -108,7 +113,8 @@ export default class Excel extends React.Component{
                 ),
                 DOM.tbody(
                     {
-                        onDoubleClick: this._showEditer,
+                        // onDoubleClick: this._showEditer,
+                        onClick: this._showEditer,
                     },
                     this.state.data.map(function(row, rowIndex){
                         return DOM.tr(

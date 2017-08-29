@@ -39,7 +39,9 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "react-tap-event-plugin": "^2.0.1"
+  },
   "babel": {
     "presets": [
       "latest",

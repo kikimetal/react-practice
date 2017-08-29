@@ -1,11 +1,14 @@
-import React from "react"
-import ReactDOM from "react-dom"
-import DOM from "react-dom-factories"
-import ReactPropTypes from "prop-types"
+import React from "react";
+import ReactDOM from "react-dom";
+import DOM from "react-dom-factories";
+import ReactPropTypes from "prop-types";
 
-import MyTextarea from "./components/my-textarea"
-import Hello from "./components/hello"
-import Excel from "./components/excel"
+// import injectTapEvent from "react-tap-event-plugin";
+// injectTapEvent();
+
+import MyTextarea from "./components/my-textarea";
+import Hello from "./components/hello";
+import Excel from "./components/excel";
 
 class MyApp extends React.Component{
     constructor(props){
@@ -15,7 +18,7 @@ class MyApp extends React.Component{
                 background: "#fee",
                 fontFamily: "verdana",
                 textAlign: "center",
-                color: "steelblue",
+                color: "dimgrey",
                 padding: "0.8rem",
                 lineHeight: "1.6",
             },
@@ -52,7 +55,17 @@ class MyApp extends React.Component{
         }else{
             hello = <Hello style={{margin: "1em"}} age={age} />
         }
-        console.log(hello);
+
+        const btnStyle = {
+            background: "#ccf",
+            borderRadius: "0.2em",
+            padding: "0.6em",
+            margin: "0.2em auto",
+            width: "20em",
+            maxWidth: "90%",
+            cursor: "pointer",
+        };
+
         return (
             <div style={this.state.style}>
                 <h1>GARMENT test</h1>
@@ -60,8 +73,16 @@ class MyApp extends React.Component{
                 {hello}
                 <Excel />
                 <div style={{padding: "1em"}}>
-                    <p><button onClick={this.exchangeDisplayHello}>exchangeDisplay Hello</button></p>
-                    <p><button onClick={this.backgroundColorChange}>change background!</button></p>
+                    <div
+                        style={btnStyle}
+                        onClick={this.exchangeDisplayHello}>
+                        exchangeDisplay Hello
+                    </div>
+                    <div
+                        style={btnStyle}
+                        onClick={this.backgroundColorChange}>
+                        change background!
+                    </div>
                 </div>
             </div>
         );
