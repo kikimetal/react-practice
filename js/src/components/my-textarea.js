@@ -30,10 +30,10 @@ export default class myTextarea extends React.Component{
                 {
                     value: this.state.text,
                     onChange: this._textChange,
-                },
+                }
             ),
             DOM.h3(null, this.state.text.length),
-            DOM.p(null, "by " + this.state.author),
+            DOM.p(null, "by " + this.state.author)
         );
     }
 }

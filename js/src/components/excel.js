@@ -30,6 +30,8 @@ export default class Excel extends React.Component{
         this._sort = this._sort.bind(this);
         this._showEditer = this._showEditer.bind(this);
         this._save = this._save.bind(this);
+        this._renderTable = this._renderTable.bind(this);
+        this._renderToolbar = this._renderToolbar.bind(this);
     }
     _sort(e){
         const data = this.state.data.slice();
@@ -48,8 +50,6 @@ export default class Excel extends React.Component{
     }
     _showEditer(e){
         if (e.target.tagName === "INPUT") return;
-        // console.log("click", e.target.tagName === "INPUT");
-        // if(this.state.edit && this.state.edit.row === newEdit.row && this.state.edit.cell === newEdit.cell) return;
         const newEdit = {
             row: parseInt(e.target.dataset.row, 10),
             cell: e.target.cellIndex,
@@ -57,7 +57,6 @@ export default class Excel extends React.Component{
         this.setState({
             edit: newEdit,
         });
-        // console.log(e.target.dataset.row, e.target.cellIndex);
     }
     _save(e){
         e.preventDefault();
@@ -71,6 +70,19 @@ export default class Excel extends React.Component{
         });
     }
     render(){
+        return DOM.div(null,
+            this._renderToolbar(),
+            this._renderTable()
+        );
+    }
+    _renderToolbar(){
+        return (
+            DOM.div(null,
+                DOM.h1(null, "hello search")
+            )
+        );
+    }
+    _renderTable(){
         return (
             DOM.table(
                 {

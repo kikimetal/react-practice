@@ -1,14 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import DOM from "react-dom-factories";
-import ReactPropTypes from "prop-types";
+import React from "react"
+import ReactDOM from "react-dom"
+import DOM from "react-dom-factories"
+import ReactPropTypes from "prop-types"
 
-// import injectTapEvent from "react-tap-event-plugin";
-// injectTapEvent();
-
-import MyTextarea from "./components/my-textarea";
-import Hello from "./components/hello";
-import Excel from "./components/excel";
+import MyTextarea from "./components/my-textarea"
+import Hello from "./components/hello"
+import Excel from "./components/excel"
+import Button from "./components/button"
+import Garment from "./components/garment"
 
 class MyApp extends React.Component{
     constructor(props){
@@ -48,12 +47,17 @@ class MyApp extends React.Component{
     }
     render(){
         console.log(this.state.helloDisplayNum);
-        let hello;
         let age = this.state.helloDisplayNum * 22;
+        let hello;
         if(this.state.helloDisplayNum === 1){
-            hello = <Hello style={{margin: "1em", background: "white"}} age={age} />
+            hello = (
+                <div>
+                    <Hello style={{margin: "1em", background: "white"}} age={age} />
+                    <Hello style={{margin: "1em"}} age={age * 1.2} />
+                </div>
+            )
         }else{
-            hello = <Hello style={{margin: "1em"}} age={age} />
+            hello = <Hello style={{margin: "1em", background: "white"}} age={age} />
         }
 
         const btnStyle = {
@@ -84,6 +88,8 @@ class MyApp extends React.Component{
                         change background!
                     </div>
                 </div>
+                <Button /><Button /><Button />
+                <Garment />
             </div>
         );
     }
