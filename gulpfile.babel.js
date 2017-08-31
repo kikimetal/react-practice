@@ -12,25 +12,59 @@ import source from "vinyl-source-stream";
 import buffer from "vinyl-buffer";
 import uglify from "gulp-uglify";
 import del from "del";
+import cleanCSS from "gulp-clean-css";
 
-gulp.task("css", ()=>{
-    return gulp.src("./css/sass/**/*.sass")  // .scss/.sass ファイルを取得
+gulp.task("css-components", ()=>{
+    return gulp.src("./css/components/**/*.sass")  // .scss/.sass ファイルを取得
         .pipe(sass({
             outputStyle: "expanded" // コンパイルする際の CSS の書式を指定できる
         }))
-        .pipe(concatCss("bundle.css"))
+        // .pipe(concatCss("components.css"))
+        .pipe(concat("components.css"))
         .pipe(gulp.dest("./css/"));  // cssフォルダー以下に保存
 });
-
-gulp.task("css-min", ()=>{
-    return gulp.src("./css/sass/**/*.sass")  // .scss/.sass ファイルを取得
-        .pipe(sass({
-            outputStyle: "compressed", // コンパイルする際の CSS の書式を指定できる
-        }))
-        // .pipe(concatCss("bundle.css"))
+gulp.task("css",
+    [
+        "css-components",
+    ],
+    ()=>{
+        return gulp.src([
+            "./css/myreset.css",
+            "./css/common.css",
+            "./css/components.css",
+        ])
         .pipe(concat("bundle.css"))
-        .pipe(gulp.dest("./css/"));  // cssフォルダー以下に保存
-});
+        .pipe(gulp.dest("./css/"));
+    }
+);
+gulp.task("css-min",
+    [
+        "css-components",
+    ],
+    ()=>{
+        return gulp.src([
+            "./css/myreset.css",
+            "./css/common.css",
+            "./css/components.css",
+        ])
+        .pipe(concat("bundle.css"))
+        .pipe(cleanCSS({debug: true}, function(details) {
+            console.log(details.name + '(originalSize): ' + details.stats.originalSize);
+            console.log(details.name + '(minifiedSize): ' + details.stats.minifiedSize);
+        }))
+        .pipe(gulp.dest("./css/"));
+    }
+);
+
+// gulp-clean-css Template
+// gulp.task('minify-css', () => {
+//     return gulp.src('styles/*.css')
+//         .pipe(cleanCSS({debug: true}, function(details) {
+//             console.log(details.name + ': ' + details.stats.originalSize);
+//             console.log(details.name + ': ' + details.stats.minifiedSize);
+//         }))
+//         .pipe(gulp.dest('dist'));
+// });
 
 gulp.task("browserify", ()=>{
     return browserify({
@@ -66,7 +100,7 @@ gulp.task("apply-prod-environment", ()=>{
 
 gulp.task("clean", (callback)=>{
     return del([
-        "./dist/**/*",
+        "./__dist/**/*",
     ], callback);
 });
 
@@ -78,11 +112,11 @@ gulp.task("dist", // deployment
         "browserify-min",
     ], ()=>{
         gulp.src("./index.html")
-            .pipe(gulp.dest("./dist/"));
+            .pipe(gulp.dest("./__dist/"));
         gulp.src("./js/bundle.js")
-            .pipe(gulp.dest("./dist/js/"));
+            .pipe(gulp.dest("./__dist/js/"));
         gulp.src("./css/bundle.css")
-            .pipe(gulp.dest("./dist/css/"));
+            .pipe(gulp.dest("./__dist/css/"));
     }
 );
 

@@ -1,11 +1,1 @@
-
-body {
-  background: pink;
-  margin: 0;
-  padding: 0.8rem;
-}
-
-body #myapp-2 {
-  background: white;
-  padding: 0.8rem;
-}
+*{padding:0;margin:0;font-size:inherit}b,h1,h2,h3,h4,h5,h6,strong{font-weight:700}h1{font-size:160%}h2{font-size:140%}h3{font-size:120%}:root{-webkit-tap-highlight-color:transparent;-ms-tap-highlight-color:transparent;tap-highlight-color:transparent;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%;background-color:#faf6ec;color:#584b4f;font-family:"Helvetica Neue",Helvetica,arial,freesans,clean,sans-serif;font-size:16px;line-height:1;vertical-align:baseline}ul{list-style:none}ul.stuffed{font-size:0}ul.stuffed li{font-size:1rem}h1{color:grey}.Button{text-align:center}.Button{min-width:6em;margin:.1em;box-shadow:0 0 .2em 0 rgba(0,0,0,.4)}

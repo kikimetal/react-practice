@@ -17,7 +17,6 @@ export default class Button extends Component{
                 background: "#ccf",
                 borderRadius: "0.2em",
                 padding: "0.6em",
-                margin: "auto",
                 maxWidth: "90%",
                 cursor: "pointer",
                 transition: "0.3s",
@@ -31,7 +30,9 @@ export default class Button extends Component{
         this.updateStyle = this.updateStyle.bind(this);
     }
     componentWillMount(){
-        this.updateStyle();
+        this.setState({
+            style: this.state.defaultStyle,
+        });
     }
     updateStyle(e){
         e && e.preventDefault();
@@ -40,15 +41,22 @@ export default class Button extends Component{
         this.setState({
             style: type ? this.state.defaultStyle : Object.assign({}, this.state.defaultStyle, this.state.hoverStyle),
             type: type,
+            innerText: this.props.children
+                ? null
+                : this.state.innerText === "clicked!"
+                    ? "click me?"
+                    : "clicked!",
         });
     }
     render(){
         const attr = {
             style: this.state.style,
-            onMouseOver: this.updateStyle,
+            // onMouseOver: this.updateStyle,
             onClick: this.updateStyle,
+            className: "Button",
         }
-        const value = this.state.innerText;
+        // const value = this.state.innerText;
+        const value = this.props.children || this.state.innerText;
         return (
             <div {...attr}>{value}</div>
         )
