@@ -1,5 +1,5 @@
 // set entry point js file name
-const rootJsFileName = "main.js";
+const rootJsFileName = "app.js";
 
 import gulp from "gulp";
 import babel from "gulp-babel";
@@ -30,7 +30,7 @@ gulp.task("css",
     ()=>{
         return gulp.src([
             "./css/myreset.css",
-            "./css/common.css",
+            "./css/app.css",
             "./css/components.css",
         ])
         .pipe(concat("bundle.css"))
@@ -44,7 +44,7 @@ gulp.task("css-min",
     ()=>{
         return gulp.src([
             "./css/myreset.css",
-            "./css/common.css",
+            "./css/app.css",
             "./css/components.css",
         ])
         .pipe(concat("bundle.css"))

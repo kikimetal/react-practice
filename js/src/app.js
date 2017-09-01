@@ -3,11 +3,12 @@ import ReactDOM from "react-dom"
 import DOM from "react-dom-factories"
 import ReactPropTypes from "prop-types"
 
-import MyTextarea from "./components/my-textarea"
-import Hello from "./components/hello"
-import Excel from "./components/excel"
-import Button from "./components/button"
-import Garment from "./components/garment"
+import MyTextarea from "./components/MyTextarea"
+import Hello from "./components/Hello"
+import Excel from "./components/Excel"
+import Button from "./components/Button"
+import Garment from "./components/Garment"
+import Door from "./components/Door"
 
 class MyApp extends React.Component{
     constructor(props){
@@ -72,10 +73,15 @@ class MyApp extends React.Component{
 
         return (
             <div style={this.state.style}>
-                <h1>GARMENT test</h1>
+                <h1>React Practice</h1>
+                <h1>MyTextarea Component</h1>
                 <MyTextarea />
+                <h1>Hello Component</h1>
                 {hello}
+                <h1>Excel Component</h1>
                 <Excel />
+
+                <h1>style change test</h1>
                 <div style={{padding: "1em"}}>
                     <div
                         style={btnStyle}
@@ -85,22 +91,35 @@ class MyApp extends React.Component{
                     <div
                         style={btnStyle}
                         onClick={this.backgroundColorChange}>
-                        change background!
+                        change background (NG)
                     </div>
                 </div>
+
+                <h1>Button Component</h1>
                 <Button>hello my button</Button>
                 <Button />
                 <Button />
                 <Button>
-                    <h1>
-                        h1 btn<Button>
+                    <h3>
+                        h3 btn<Button>
                             btn
                             <Button>btn</Button>
                             <Button>btn</Button>
                         </Button>
-                    </h1>
+                    </h3>
                 </Button>
-                <Garment />
+
+                <h1>Door Component</h1>
+                <h2>click me! vvv</h2>
+                <Door style={{height: "200px"}} />
+                <Door style={{height: "200px"}} />
+                <Door style={{height: "200px"}} />
+                <Door style={{height: "200px"}} />
+                <Door />
+                <Door />
+                <Door />
+                <Door />
+                <Door />
             </div>
         );
     }
@@ -108,5 +127,5 @@ class MyApp extends React.Component{
 
 ReactDOM.render(
     <MyApp />,
-    document.getElementById("myapp")
+    document.getElementById("app")
 );

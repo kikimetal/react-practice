@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-// import React from "react"
 import ReactDOM from "react-dom"
 import DOM from "react-dom-factories"
 import ReactPropTypes from "prop-types"

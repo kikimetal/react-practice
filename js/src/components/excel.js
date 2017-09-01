@@ -78,7 +78,7 @@ export default class Excel extends React.Component{
     _renderToolbar(){
         return (
             DOM.div(null,
-                DOM.h1(null, "hello search")
+                DOM.h4(null, "search toolbar")
             )
         );
     }
