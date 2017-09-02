@@ -26,12 +26,16 @@ export default class Excel extends React.Component{
             sortby: null,
             descending: false,
             edit: null,
+            search: false,
+            preSearchData: null,
         };
         this._sort = this._sort.bind(this);
         this._showEditer = this._showEditer.bind(this);
         this._save = this._save.bind(this);
         this._renderTable = this._renderTable.bind(this);
         this._renderToolbar = this._renderToolbar.bind(this);
+        this._toggleSearch = this._toggleSearch.bind(this);
+        this._renderSearch = this._renderSearch.bind(this);
     }
     _sort(e){
         const data = this.state.data.slice();
@@ -69,16 +73,52 @@ export default class Excel extends React.Component{
             data: data,
         });
     }
-    render(){
-        return DOM.div(null,
-            this._renderToolbar(),
-            this._renderTable()
+    _toggleSearch(){
+        if(this.state.search){
+            this.setState({
+                data: this.state.preSearchData,
+                search: false,
+                preSearchData: null,
+            });
+        }else{
+            this.setState({
+                preSearchData: this.state.data,
+                search: true,
+            });
+        }
+    }
+    _renderSearch(){
+        if(!this.state.search){
+            return
+        };
+        return DOM.tr(
+            {
+                onChange: this._search,
+            },
+            this.props.headers.map(function(_ignoreValue, idx){
+                return DOM.td(
+                    {
+                        key: idx,
+                    },
+                    DOM.input({
+                        type: "text",
+                        "data-idx": idx,
+                    })
+                );
+            })
         );
     }
     _renderToolbar(){
         return (
-            DOM.div(null,
-                DOM.h4(null, "search toolbar")
+            DOM.button(
+                {
+                    onClick: this._toggleSearch,
+                    className: "toolbar",
+                    style: {
+                        padding: ".6em",
+                    },
+                },
+                "検索"
             )
         );
     }
@@ -100,12 +140,7 @@ export default class Excel extends React.Component{
                         },
                         onClick: this._sort,
                     },
-                    DOM.tr(
-                        {
-                            style: {
-                                // background: "#fdd",
-                            }
-                        },
+                    DOM.tr(null,
                         this.props.headers.map(function(title, index){
                             if(index === this.state.sortby){
                                 title += this.state.descending ? " \u2191" : " \u2193";
@@ -125,9 +160,9 @@ export default class Excel extends React.Component{
                 ),
                 DOM.tbody(
                     {
-                        // onDoubleClick: this._showEditer,
-                        onClick: this._showEditer,
+                        onDoubleClick: this._showEditer,
                     },
+                    this._renderSearch(),
                     this.state.data.map(function(row, rowIndex){
                         return DOM.tr(
                             {
@@ -135,7 +170,6 @@ export default class Excel extends React.Component{
                             },
                             row.map(function(cell, cellIndex){
                                 let content = cell;
-                                // 処理
                                 const edit = this.state.edit;
                                 if(edit && edit.row === rowIndex && edit.cell === cellIndex){
                                     content = DOM.form(
@@ -165,6 +199,12 @@ export default class Excel extends React.Component{
                     }, this)
                 )
             )
+        );
+    }
+    render(){
+        return DOM.div(null,
+            this._renderToolbar(),
+            this._renderTable()
         );
     }
 }
