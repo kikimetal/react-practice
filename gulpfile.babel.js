@@ -104,7 +104,7 @@ gulp.task("clean", (callback)=>{
     ], callback);
 });
 
-gulp.task("dist", // deployment
+gulp.task("d", // deployment
     [
         "clean",
         "apply-prod-environment",
@@ -120,7 +120,7 @@ gulp.task("dist", // deployment
     }
 );
 
-gulp.task("watch", ["default"], ()=>{
+gulp.task("w", ["default"], ()=>{
     gulp.watch("./css/**/*.sass", [
         "css",
     ]);

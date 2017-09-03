@@ -9,6 +9,7 @@ import Excel from "./components/Excel"
 import Button from "./components/Button"
 import Garment from "./components/Garment"
 import Door from "./components/Door"
+import Form from "./components/Form"
 
 class MyApp extends React.Component{
     constructor(props){
@@ -108,6 +109,10 @@ class MyApp extends React.Component{
                         </Button>
                     </h3>
                 </Button>
+
+                <h1>Form Component</h1>
+                <p>onChange handler test</p>
+                <Form />
 
                 <h1>Door Component</h1>
                 <h2>click me! vvv</h2>

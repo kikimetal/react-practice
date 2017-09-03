@@ -1,6 +1,7 @@
 .Door
     &, *
         box-sizing: border-box
+
     display: flex
     flex-flow: row wrap
     justify-content: center
@@ -9,12 +10,13 @@
     height: 95vh
     margin: 0
     padding: 0
-    background: grey
+    background: lightgrey
     color: white
     font-size: 200%
     cursor: pointer
     overflow: hidden
-    .left, .right
+
+    > .left, > .right
         display: flex
         flex-flow: row wrap
         align-items: center
@@ -22,15 +24,19 @@
         height: 100%
         padding: .3em
         transition: .8s
-    .left
+        z-index: 1
+
+    > .left
         justify-content: flex-end
         background: #fa5
         transform-origin: 0% 50%
-    .right
+
+    > .right
         justify-content: flex-start
         background: coral
         transform-origin: 100% 50%
-    .inner
+
+    > .inner
         position: absolute
         top: 0
         left: 0
@@ -40,15 +46,18 @@
         height: 1em
         margin: auto
         transition: 1s
-        filter: blur(1em)
-        transform: translateY(2em)
+        filter: blur(10px)
+        transform: translateY(1em)
+        opacity: 0
+
     &.open
-        .left, .right
+        > .left
             background: gold
-        .left
             transform: rotateY(-90deg) scaleY(2)
-        .right
+        > .right
+            background: gold
             transform: rotateY(90deg) scaleY(2)
-        .inner
+        > .inner
             filter: blur(0)
             transform: translateY(0)
+            opacity: 1

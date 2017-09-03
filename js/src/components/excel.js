@@ -36,6 +36,7 @@ export default class Excel extends React.Component{
         this._renderToolbar = this._renderToolbar.bind(this);
         this._toggleSearch = this._toggleSearch.bind(this);
         this._renderSearch = this._renderSearch.bind(this);
+        this._search = this._search.bind(this);
     }
     _sort(e){
         const data = this.state.data.slice();
@@ -87,6 +88,22 @@ export default class Excel extends React.Component{
             });
         }
     }
+    _search(e){
+        const needle = e.target.value.toLowerCase();
+        if(!needle){
+            this.setState({
+                data: this.state.preSearchData,
+            });
+            return;
+        }
+        const idx = e.target.dataset.idx;
+        const searchData = this.state.preSearchData.filter(function(row){
+            return row[idx].toString().toLowerCase().indexOf(needle) > -1;
+        });
+        this.setState({
+            data: searchData,
+        });
+    }
     _renderSearch(){
         if(!this.state.search){
             return
@@ -103,6 +120,10 @@ export default class Excel extends React.Component{
                     DOM.input({
                         type: "text",
                         "data-idx": idx,
+                        style: {
+                            display: "inline-block",
+                            maxWidth: "6em",
+                        },
                     })
                 );
             })
@@ -116,6 +137,8 @@ export default class Excel extends React.Component{
                     className: "toolbar",
                     style: {
                         padding: ".6em",
+                        background: "white",
+                        borderRadius: ".2em",
                     },
                 },
                 "検索"
@@ -130,6 +153,7 @@ export default class Excel extends React.Component{
                         border: "1px solid grey",
                         padding: "0.5rem",
                         margin: "0 auto",
+                        width: "800px",
                         maxWidth: "100%",
                     },
                 },

@@ -1,4 +1,4 @@
-/*myreset.css*/
+/*myreset.css----*/
 *{
     padding: 0;
     margin: 0;
@@ -34,3 +34,4 @@ ul.stuffed{
 ul.stuffed li{
     font-size: 1rem;
 }
+/*----myreset.css*/
