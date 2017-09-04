@@ -116,14 +116,7 @@ class MyApp extends React.Component{
 
                 <h1>Door Component</h1>
                 <h2>click me! vvv</h2>
-                <Door style={{height: "200px"}} />
-                <Door style={{height: "200px"}} />
-                <Door style={{height: "200px"}} />
-                <Door style={{height: "200px"}} />
-                <Door />
-                <Door />
-                <Door />
-                <Door />
+                <Door style={{height: "150px"}} />
                 <Door />
             </div>
         );
