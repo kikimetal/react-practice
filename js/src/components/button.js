@@ -3,7 +3,6 @@ import ReactDOM from "react-dom"
 import DOM from "react-dom-factories"
 import ReactPropTypes from "prop-types"
 
-// export default class Button extends React.Component{
 export default class Button extends Component{
     constructor(props){
         super(props);
@@ -50,11 +49,9 @@ export default class Button extends Component{
     render(){
         const attr = {
             style: this.state.style,
-            // onMouseOver: this.updateStyle,
             onClick: this.updateStyle,
             className: "Button",
         }
-        // const value = this.state.innerText;
         const value = this.props.children || this.state.innerText;
         return (
             <div {...attr}>{value}</div>
