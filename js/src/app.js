@@ -125,5 +125,5 @@ class MyApp extends React.Component{
 
 ReactDOM.render(
     <MyApp />,
-    document.getElementById("app")
+    document.getElementById("App")
 );
