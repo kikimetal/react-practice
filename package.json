@@ -4,7 +4,7 @@
   "description": "garment site",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kikimetal/garment.git"
+    "url": "https://github.com/kikimetal/react-practice.git"
   },
   "main": "index.js",
   "scripts": {
