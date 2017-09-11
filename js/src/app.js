@@ -10,8 +10,9 @@ import Button from "./components/Button"
 import Garment from "./components/Garment"
 import Door from "./components/Door"
 import Form from "./components/Form"
+import DiscoveryButton from "./components/DiscoveryButton"
 
-class MyApp extends React.Component{
+class App extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -124,6 +125,6 @@ class MyApp extends React.Component{
 }
 
 ReactDOM.render(
-    <MyApp />,
+    <App />,
     document.getElementById("App")
-);
+)

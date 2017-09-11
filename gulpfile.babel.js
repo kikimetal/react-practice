@@ -1,11 +1,10 @@
 // set entry point js file name
-const rootJsFileName = "app.js";
+const rootJsFileName = "App.js";
 
 import gulp from "gulp";
 import babel from "gulp-babel";
 import sass from "gulp-sass";
 import concat from "gulp-concat";
-import concatCss from "gulp-concat-css";
 import browserify from "browserify";
 import babelify from "babelify";
 import source from "vinyl-source-stream";
@@ -19,7 +18,6 @@ gulp.task("css-components", ()=>{
         .pipe(sass({
             outputStyle: "expanded" // コンパイルする際の CSS の書式を指定できる
         }))
-        // .pipe(concatCss("components.css"))
         .pipe(concat("components.css"))
         .pipe(gulp.dest("./css/"));  // cssフォルダー以下に保存
 });
@@ -72,7 +70,7 @@ gulp.task("browserify", ()=>{
         debug: true,
     })
         .transform(babelify, {
-            presets: ["latest", "react"],
+            presets: ["es2015", "react"],
         })
         .bundle()
         .on("error", function (err) { console.log("Error : " + err.message); })
@@ -85,7 +83,7 @@ gulp.task("browserify-min", ()=>{
         entries: [`./js/src/${rootJsFileName}`],
     })
         .transform(babelify, {
-            presets: ["latest", "react"],
+            presets: ["es2015", "react"],
         })
         .bundle()
         .pipe(source("bundle.js")) // 出力ファイル名を指定
@@ -104,7 +102,7 @@ gulp.task("clean", (callback)=>{
     ], callback);
 });
 
-gulp.task("d", // deployment
+gulp.task("dist", // deployment
     [
         "clean",
         "apply-prod-environment",
@@ -120,16 +118,32 @@ gulp.task("d", // deployment
     }
 );
 
-gulp.task("w", ["default"], ()=>{
-    gulp.watch("./css/**/*.sass", [
+gulp.task("watch", ["default"], ()=>{
+    gulp.watch("./css/**/*", [
         "css",
     ]);
     gulp.watch("./js/src/**/*.js", [
         "browserify",
+        "browserify-discovery",
     ]);
 });
 
 gulp.task("default", [
     "browserify",
+    "browserify-discovery",
     "css",
 ]);
+
+gulp.task("browserify-discovery", ()=>{
+    return browserify({
+        entries: [`./js/src/Discovery.js`],
+        debug: true,
+    })
+        .transform(babelify, {
+            presets: ["es2015", "react"],
+        })
+        .bundle()
+        .on("error", function (err) { console.log("Error : " + err.message); })
+        .pipe(source("discovery-bundle.js")) // 出力ファイル名を指定
+        .pipe(gulp.dest("./js/"));
+});
