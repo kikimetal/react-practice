@@ -1,0 +1,267 @@
+.App {
+  background: dimgrey;
+  color: white;
+}
+
+.Button {
+  display: inline-block;
+  min-width: 6em;
+  margin: 0.1em;
+  text-align: center;
+  -webkit-box-shadow: 0 0 0.2em 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 0.2em 0 rgba(0, 0, 0, 0.4);
+  padding: 0.6em;
+  background: white;
+  color: #79d;
+  border: 1px solid;
+  border-radius: 3px;
+  cursor: pointer;
+  -webkit-transition: 0.4s ease;
+  transition: 0.4s ease;
+}
+
+.Button:hover {
+  background: dimgrey;
+  color: white;
+}
+
+.Discovery {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 1em 0;
+  background: black;
+  color: white;
+  z-index: 9999;
+}
+
+.Door {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 95vh;
+  margin: 0;
+  padding: 0;
+  background: lightgrey;
+  color: white;
+  font-size: 200%;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.Door, .Door * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.Door > .left, .Door > .right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  padding: .3em;
+  -webkit-transition: .8s;
+  transition: .8s;
+  z-index: 1;
+}
+
+.Door > .left {
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  background: #fa5;
+  -webkit-transform-origin: 0% 50%;
+  transform-origin: 0% 50%;
+}
+
+.Door > .right {
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  background: coral;
+  -webkit-transform-origin: 100% 50%;
+  transform-origin: 100% 50%;
+}
+
+.Door > .inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 10em;
+  height: 1em;
+  margin: auto;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-filter: blur(10px);
+  filter: blur(10px);
+  -webkit-transform: translateY(1em);
+  transform: translateY(1em);
+  opacity: 0;
+}
+
+.Door.open > .left {
+  background: gold;
+  -webkit-transform: rotateY(-90deg) scaleY(2);
+  transform: rotateY(-90deg) scaleY(2);
+}
+
+.Door.open > .right {
+  background: gold;
+  -webkit-transform: rotateY(90deg) scaleY(2);
+  transform: rotateY(90deg) scaleY(2);
+}
+
+.Door.open > .inner {
+  -webkit-filter: blur(0);
+  filter: blur(0);
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.Form {
+  background: white;
+  border: 1px solid lightgrey;
+  border-radius: 0.2em;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.Form input:nth-child(1) {
+  -webkit-animation: fade-in 2s ease 0.15s infinite alternate;
+  animation: fade-in 2s ease 0.15s infinite alternate;
+  -webkit-animation-fill-mode: none;
+  animation-fill-mode: none;
+}
+
+.Form input:nth-child(2) {
+  -webkit-animation: fade-in 2s ease 0.3s infinite alternate;
+  animation: fade-in 2s ease 0.3s infinite alternate;
+  -webkit-animation-fill-mode: none;
+  animation-fill-mode: none;
+}
+
+.Form input:nth-child(3) {
+  -webkit-animation: fade-in 2s ease 0.45s infinite alternate;
+  animation: fade-in 2s ease 0.45s infinite alternate;
+  -webkit-animation-fill-mode: none;
+  animation-fill-mode: none;
+}
+
+.Form input:nth-child(4) {
+  -webkit-animation: fade-in 2s ease 0.6s infinite alternate;
+  animation: fade-in 2s ease 0.6s infinite alternate;
+  -webkit-animation-fill-mode: none;
+  animation-fill-mode: none;
+}
+
+.Form input:nth-child(5) {
+  -webkit-animation: fade-in 2s ease 0.75s infinite alternate;
+  animation: fade-in 2s ease 0.75s infinite alternate;
+  -webkit-animation-fill-mode: none;
+  animation-fill-mode: none;
+}
+
+.Form input:nth-child(6) {
+  -webkit-animation: fade-in 2s ease 0.9s infinite alternate;
+  animation: fade-in 2s ease 0.9s infinite alternate;
+  -webkit-animation-fill-mode: none;
+  animation-fill-mode: none;
+}
+
+.Form input:nth-child(7) {
+  -webkit-animation: fade-in 2s ease 1.05s infinite alternate;
+  animation: fade-in 2s ease 1.05s infinite alternate;
+  -webkit-animation-fill-mode: none;
+  animation-fill-mode: none;
+}
+
+.Form input:nth-child(8) {
+  -webkit-animation: fade-in 2s ease 1.2s infinite alternate;
+  animation: fade-in 2s ease 1.2s infinite alternate;
+  -webkit-animation-fill-mode: none;
+  animation-fill-mode: none;
+}
+
+.Form input:nth-child(9) {
+  -webkit-animation: fade-in 2s ease 1.35s infinite alternate;
+  animation: fade-in 2s ease 1.35s infinite alternate;
+  -webkit-animation-fill-mode: none;
+  animation-fill-mode: none;
+}
+
+.Form input:nth-child(10) {
+  -webkit-animation: fade-in 2s ease 1.5s infinite alternate;
+  animation: fade-in 2s ease 1.5s infinite alternate;
+  -webkit-animation-fill-mode: none;
+  animation-fill-mode: none;
+}
+
+.Form input {
+  width: 6em;
+  margin: 0.3em 0.1em;
+  border: 1px solid lightgrey;
+  border-radius: 0.1em;
+}
+
+.Form input[type="submit"] {
+  background: white;
+  border: 1px solid #adf;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.Form input[type="submit"]:hover {
+  background: grey;
+  border: 1px solid white;
+  color: white;
+  -webkit-animation: prr ease;
+  animation: prr ease;
+}

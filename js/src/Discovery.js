@@ -26,29 +26,38 @@ class Discovery extends React.Component{
         }
         const Discovery = (
             <div className="Discovery">
-                <div>
+                <h1>Discover Components</h1>
+                <section>
                     <h1>Button</h1>
                     <Button />
-                </div>
-                <div>
+                </section>
+                <section>
                     <h1>Button</h1>
                     <Button />
-                </div>
-                <div>
+                </section>
+                <section>
                     <h1>Door</h1>
                     <Door />
-                </div>
+                </section>
             </div>
         )
+        const buttonStyle = {
+            display: "block",
+            position: "fixed",
+            top: "10px",
+            right: "10px",
+            zIndex: 999999,
+        }
+        const spin = this.state.show ? "spin" : null
         return (
             <div>
-                <button className="DiscoveryExchangeButton" onClick={switchDisplay}>
-                    <Beer />
-                    <Camera />
-                    <FaAsterisk />
-                    <MdApps className="spin" />
+                <Button style={buttonStyle} onClick={switchDisplay}>
+                    <Beer className={spin} />
+                    <Camera className={spin} />
+                    <FaAsterisk className={spin} />
+                    <MdApps className={spin} />
                     switchDisplay Discovery
-                </button>
+                </Button>
                 {this.state.show ? Discovery : null}
             </div>
         )
