@@ -1,15 +1,15 @@
 import React from "react"
 import ReactDOM from "react-dom"
+
+// react-icons
 import Beer from 'react-icons/lib/fa/beer'
 import Camera from 'react-icons/lib/md/camera'
-// import * as FontAwesome from 'react-icons/lib/fa' // これでもいける！
-// const FaBeer = FontAwesome.FaBeer
-import {FaAsterisk} from 'react-icons/lib/fa'
-import {MdApps} from 'react-icons/lib/md'
-
+import Asterisk from 'react-icons/lib/fa/asterisk'
+import Apps from 'react-icons/lib/md/apps'
 
 import Button from "./components/Button"
 import Door from "./components/Door"
+import PoyoyoBox from "./components/PoyoyoBox"
 
 class Discovery extends React.Component{
     constructor(props){
@@ -28,8 +28,8 @@ class Discovery extends React.Component{
             <div className="Discovery">
                 <h1>Discover Components</h1>
                 <section>
-                    <h1>Button</h1>
-                    <Button />
+                    <h1>PoyoyoBox</h1>
+                    <PoyoyoBox />
                 </section>
                 <section>
                     <h1>Button</h1>
@@ -54,8 +54,8 @@ class Discovery extends React.Component{
                 <Button style={buttonStyle} onClick={switchDisplay}>
                     <Beer className={spin} />
                     <Camera className={spin} />
-                    <FaAsterisk className={spin} />
-                    <MdApps className={spin} />
+                    <Asterisk className={spin} />
+                    <Apps className={spin} />
                     switchDisplay Discovery
                 </Button>
                 {this.state.show ? Discovery : null}

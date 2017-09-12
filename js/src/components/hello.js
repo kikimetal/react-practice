@@ -2,7 +2,7 @@ import React from "react"
 import DOM from "react-dom-factories"
 import ReactPropTypes from "prop-types"
 
-import mergeStyle from "./functions/merge-style"
+import mergeStyle from "../functions/merge-style"
 
 class HelloJSX extends React.Component{
     constructor(props){

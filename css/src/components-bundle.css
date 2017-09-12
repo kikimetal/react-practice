@@ -15,6 +15,8 @@
   color: #79d;
   border: 1px solid;
   border-radius: 3px;
+  font-weight: lighter;
+  letter-spacing: 0.07em;
   cursor: pointer;
   -webkit-transition: 0.4s ease;
   transition: 0.4s ease;
@@ -264,4 +266,19 @@
   color: white;
   -webkit-animation: prr ease;
   animation: prr ease;
+}
+
+.PoyoyoBox .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 3px auto;
+  color: dimgrey;
+  border-radius: 3px;
 }

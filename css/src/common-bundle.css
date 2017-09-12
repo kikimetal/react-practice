@@ -92,4 +92,79 @@ h1 {
   animation: spin 4s linear infinite;
 }
 
+@-webkit-keyframes hmm {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  2% {
+    -webkit-transform: translateX(-0.1em);
+    transform: translateX(-0.1em);
+  }
+  4% {
+    -webkit-transform: translateX(0.4em);
+    transform: translateX(0.4em);
+  }
+  6% {
+    -webkit-transform: translateX(-0.4em);
+    transform: translateX(-0.4em);
+  }
+  8% {
+    -webkit-transform: translateX(0.2em);
+    transform: translateX(0.2em);
+  }
+  10% {
+    -webkit-transform: translateX(-0.2em);
+    transform: translateX(-0.2em);
+  }
+  12% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+@keyframes hmm {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  2% {
+    -webkit-transform: translateX(-0.1em);
+    transform: translateX(-0.1em);
+  }
+  4% {
+    -webkit-transform: translateX(0.4em);
+    transform: translateX(0.4em);
+  }
+  6% {
+    -webkit-transform: translateX(-0.4em);
+    transform: translateX(-0.4em);
+  }
+  8% {
+    -webkit-transform: translateX(0.2em);
+    transform: translateX(0.2em);
+  }
+  10% {
+    -webkit-transform: translateX(-0.2em);
+    transform: translateX(-0.2em);
+  }
+  12% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+.hmm {
+  -webkit-animation: hmm 5s ease infinite;
+  animation: hmm 5s ease infinite;
+}
+
 /*----------common*/
