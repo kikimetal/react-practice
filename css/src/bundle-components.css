@@ -23,7 +23,7 @@
   color: white;
 }
 
-.Discovery {
+.Discover {
   display: block;
   position: absolute;
   top: 0;
@@ -33,7 +33,7 @@
   padding: 1em 0;
   background: black;
   color: white;
-  z-index: 9999;
+  z-index: 10000;
 }
 
 .Door {

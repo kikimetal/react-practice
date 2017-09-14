@@ -1,7 +1,7 @@
 import React from "react"
 import InsertEmoticon from "react-icons/lib/md/insert-emoticon"
 
-import getRandomColor from "../functions/get-random-color"
+import getRandomColor from "./functions/get-random-color"
 import {Motion, spring, presets, StaggeredMotion, TransitionMotion} from 'react-motion'
 import Button from "./Button"
 

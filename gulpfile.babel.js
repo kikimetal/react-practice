@@ -1,9 +1,20 @@
-// set entry point js file name
-// const rootJsFileName = "App.js"
-const rootJsFileName = "index.js"
+// deployment dir name
+const deploymentDir = "__dist"
+// html file
+const indexHtml = "index.html"
+const discoverHtml = "index.html"
+// entry point js file name
+const indexJs = "index.js"
+const discoverJs = "discover.js"
+// bundle js file name
+const bundleIndexJs = "bundle.js"
+const bundleIndexMinJs = "bundle.js"
+const bundleDiscoverJs = "bundle.js"
+const bundleDiscoverMinJs = "bundle.js"
+// bundle css file name
+const bundleCSS = "bundle.css"
 
 import gulp from "gulp"
-import babel from "gulp-babel"
 import sass from "gulp-sass"
 import concat from "gulp-concat"
 import browserify from "browserify"
@@ -20,7 +31,7 @@ gulp.task("sass-compile-components", ()=>{
         .pipe(sass({
             outputStyle: "expanded",
         }))
-        .pipe(concat("components-bundle.css"))
+        .pipe(concat("bundle-components.css"))
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
@@ -37,7 +48,7 @@ gulp.task("sass-compile-common", () => {
         .pipe(sass({
             outputStyle: "expanded",
         }))
-        .pipe(concat("common-bundle.css"))
+        .pipe(concat("bundle-common.css"))
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
@@ -52,14 +63,10 @@ gulp.task("css",
     ],
     () => {
         return gulp.src([
-            "./css/src/common-bundle.css",
-            "./css/src/components-bundle.css",
+            "./css/src/bundle-common.css",
+            "./css/src/bundle-components.css",
         ])
-        .pipe(concat("bundle.css"))
-        // .pipe(autoprefixer({
-        //     browsers: ['last 2 versions'],
-        //     cascade: false
-        // }))
+        .pipe(concat(bundleCSS))
         .pipe(gulp.dest("./css/"))
     }
 )
@@ -71,14 +78,10 @@ gulp.task("css-min",
     ],
     () => {
         return gulp.src([
-            "./css/src/common-bundle.css",
-            "./css/src/components-bundle.css",
+            "./css/src/bundle-common.css",
+            "./css/src/bundle-components.css",
         ])
-        .pipe(concat("bundle.css"))
-        .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
-            cascade: false
-        }))
+        .pipe(concat(bundleCSS))
         .pipe(cleanCSS({debug: true}, function(details) {
             console.log(details.name + '(originalSize): ' + details.stats.originalSize);
             console.log(details.name + '(minifiedSize): ' + details.stats.minifiedSize);
@@ -87,75 +90,61 @@ gulp.task("css-min",
     }
 )
 
-
-// gulp-clean-css Template
-// gulp.task('minify-css', () => {
-//     return gulp.src('styles/*.css')
-//         .pipe(cleanCSS({debug: true}, function(details) {
-//             console.log(details.name + ': ' + details.stats.originalSize);
-//             console.log(details.name + ': ' + details.stats.minifiedSize);
-//         }))
-//         .pipe(gulp.dest('dist'));
-// });
-
-gulp.task("browserify-app", ()=>{
+gulp.task("browserify-index", ()=>{
     return browserify({
-        entries: [`./js/src/${rootJsFileName}`],
+        entries: [`./js/src/${indexJs}`],
         debug: true,
     })
         .transform(babelify, {
-            presets: ["es2015", "react"],
+            presets: ["latest", "react"],
         })
         .bundle()
         .on("error", function (err) { console.log("Error : " + err.message); })
-        .pipe(source("bundle.js")) // 出力ファイル名を指定
+        .pipe(source(bundleIndexJs)) // 出力ファイル名を指定
         .pipe(gulp.dest("./js/"));
 });
 
-gulp.task("browserify-app-min", ()=>{
+gulp.task("browserify-index-min", ()=>{
     return browserify({
-        entries: [`./js/src/${rootJsFileName}`],
+        entries: [`./js/src/${indexJs}`],
     })
         .transform(babelify, {
-            presets: ["es2015", "react"],
+            presets: ["latest", "react"],
         })
         .bundle()
-        .pipe(source("bundle.js")) // 出力ファイル名を指定
+        .pipe(source(bundleIndexMinJs)) // 出力ファイル名を指定
         .pipe(buffer())
         .pipe(uglify())
         .pipe(gulp.dest("./js/"));
 });
 
-gulp.task("browserify-discovery", ()=>{
+gulp.task("browserify-discover", ()=>{
     return browserify({
-        entries: [`./js/src/Discovery.js`],
+        entries: [`./js/src/${discoverJs}`],
         debug: true,
     })
         .transform(babelify, {
-            presets: ["es2015", "react"],
+            presets: ["latest", "react"],
         })
         .bundle()
         .on("error", function (err) { console.log("Error : " + err.message); })
-        .pipe(source("discovery-bundle.js")) // 出力ファイル名を指定
+        .pipe(source(bundleDiscoverJs)) // 出力ファイル名を指定
         .pipe(gulp.dest("./js/"));
 });
 
-gulp.task("browserify-discovery-min", ()=>{
+gulp.task("browserify-discover-min", ()=>{
     return browserify({
-        entries: [`./js/src/Discovery.js`],
+        entries: [`./js/src/${discoverJs}`],
     })
         .transform(babelify, {
-            presets: ["es2015", "react"],
+            presets: ["latest", "react"],
         })
         .bundle()
-        .pipe(source("discovery-bundle.js"))
+        .pipe(source(bundleDiscoverMinJs))
         .pipe(buffer())
         .pipe(uglify())
         .pipe(gulp.dest("./js/"));
 });
-
-
-
 
 gulp.task("apply-prod-environment", ()=>{
     return process.env.NODE_ENV = "production";
@@ -163,39 +152,66 @@ gulp.task("apply-prod-environment", ()=>{
 
 gulp.task("clean", (callback)=>{
     return del([
-        "./__dist/**/*",
+        `./${deploymentDir}/**/*`,
     ], callback);
 });
 
-gulp.task("dist", // deployment
+gulp.task("dist", // deployment index
     [
         "clean",
         "apply-prod-environment",
         "css-min",
-        "browserify-app-min",
-        "browserify-discovery-min",
+        "browserify-index-min",
     ], ()=>{
-        gulp.src("./index.html")
-            .pipe(gulp.dest("./__dist/"));
-        gulp.src("./js/*.js")
-            .pipe(gulp.dest("./__dist/js/"));
-        gulp.src("./css/*.css")
-            .pipe(gulp.dest("./__dist/css/"));
+        gulp.src(`./${indexHtml}`)
+            .pipe(gulp.dest(`./${deploymentDir}/`));
+        gulp.src(`./js/${bundleIndexMinJs}`)
+            .pipe(gulp.dest(`./${deploymentDir}/js/`));
+        gulp.src(`./css/${bundleCSS}`)
+            .pipe(gulp.dest(`./${deploymentDir}/css/`));
     }
-);
+)
+
+gulp.task("dist-discover", // deployment discover
+    [
+        "clean",
+        "apply-prod-environment",
+        "css-min",
+        "browserify-discover-min",
+    ], ()=>{
+        gulp.src(`./${discoverHtml}`)
+            .pipe(gulp.dest(`./${deploymentDir}/`));
+        gulp.src(`./js/${bundleDiscoverMinJs}`)
+            .pipe(gulp.dest(`./${deploymentDir}/js/`));
+        gulp.src(`./css/${bundleCSS}`)
+            .pipe(gulp.dest(`./${deploymentDir}/css/`));
+    }
+)
 
 gulp.task("watch", ["default"], ()=>{
     gulp.watch("./css/**/*", [
         "css",
     ])
     gulp.watch("./js/src/**/*.js", [
-        "browserify-app",
-        "browserify-discovery",
+        "browserify-index",
     ])
 })
 
-gulp.task("default", [
-    "browserify-app",
-    "browserify-discovery",
+gulp.task("watch-discover", ["discover"], ()=>{
+    gulp.watch("./css/**/*", [
+        "css",
+    ])
+    gulp.watch("./js/src/**/*.js", [
+        "browserify-discover",
+    ])
+})
+
+gulp.task("discover", [
     "css",
+    "browserify-discover",
+])
+
+gulp.task("default", [
+    "css",
+    "browserify-index",
 ])

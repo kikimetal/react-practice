@@ -7,12 +7,12 @@ import Camera from 'react-icons/lib/md/camera'
 import Asterisk from 'react-icons/lib/fa/asterisk'
 import Apps from 'react-icons/lib/md/apps'
 
-import Button from "./components/Button"
-import Door from "./components/Door"
-import PoyoyoBox from "./components/PoyoyoBox"
-import SVG from "./components/SVG"
+import Button from "./Button"
+import Door from "./Door"
+import PoyoyoBox from "./PoyoyoBox"
+import SVG from "./SVG"
 
-class Discovery extends React.Component{
+export default class Discover extends React.Component{
     constructor(props){
         super(props)
         this.state = {
@@ -25,8 +25,8 @@ class Discovery extends React.Component{
                 show: !this.state.show,
             })
         }
-        const Discovery = (
-            <div className="Discovery">
+        const Discover = (
+            <div className="Discover">
                 <h1>Discover Components</h1>
 
                 <section>
@@ -55,7 +55,7 @@ class Discovery extends React.Component{
             position: "fixed",
             top: "10px",
             right: "10px",
-            zIndex: 999999,
+            zIndex: 999999999,
         }
         const spin = this.state.show ? "spin" : null
         return (
@@ -65,15 +65,10 @@ class Discovery extends React.Component{
                     <Camera className={spin} />
                     <Asterisk className={spin} />
                     <Apps className={spin} />
-                    switchDisplay Discovery
+                    switchDisplay Discover
                 </Button>
-                {this.state.show ? Discovery : null}
+                {this.state.show ? Discover : null}
             </div>
         )
     }
 }
-
-ReactDOM.render(
-    <Discovery />,
-    document.getElementById("Discovery")
-)

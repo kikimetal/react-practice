@@ -3,9 +3,9 @@ import ReactDOM from "react-dom"
 import DOM from "react-dom-factories"
 import PropTypes from "prop-types"
 
-import RouterTest from "./components/RouterTest"
+import RouterTest from "./RouterTest"
 
-class App extends React.Component{
+export default class App extends React.Component{
     constructor(props){
         super(props)
     }
@@ -21,10 +21,3 @@ class App extends React.Component{
         )
     }
 }
-
-export default App
-
-// ReactDOM.render(
-//     <App />,
-//     document.getElementById("App")
-// )
