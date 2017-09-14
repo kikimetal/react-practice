@@ -3,9 +3,7 @@ import ReactDOM from "react-dom"
 import DOM from "react-dom-factories"
 import PropTypes from "prop-types"
 
-import Button from "./components/Button"
-import Door from "./components/Door"
-import Form from "./components/Form"
+import RouterTest from "./components/RouterTest"
 
 class App extends React.Component{
     constructor(props){
@@ -17,20 +15,16 @@ class App extends React.Component{
         }
         return (
             <div {...attr}>
-                <h1>hello my App</h1>
-                <Door />
-                <Button />
-                <Door />
-                <Button />
-                <Door />
-                <Button />
-                <Door />
+                <h1>Router test</h1>
+                <RouterTest />
             </div>
         )
     }
 }
 
-ReactDOM.render(
-    <App />,
-    document.getElementById("App")
-)
+export default App
+
+// ReactDOM.render(
+//     <App />,
+//     document.getElementById("App")
+// )

@@ -24,23 +24,21 @@
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
-    "gulp-babel": "^7.0.0",
     "gulp-clean-css": "^3.8.0",
     "gulp-concat": "^2.6.1",
-    "gulp-concat-css": "^2.3.0",
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^3.0.0",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-dom-factories": "^1.0.1",
+    "react-router-dom": "^4.2.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
     "react-icons": "^2.2.5",
-    "react-motion": "^0.5.1",
-    "react-tap-event-plugin": "^2.0.1"
+    "react-motion": "^0.5.1"
   },
   "babel": {
     "presets": [

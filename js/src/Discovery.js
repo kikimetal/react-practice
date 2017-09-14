@@ -10,6 +10,7 @@ import Apps from 'react-icons/lib/md/apps'
 import Button from "./components/Button"
 import Door from "./components/Door"
 import PoyoyoBox from "./components/PoyoyoBox"
+import SVG from "./components/SVG"
 
 class Discovery extends React.Component{
     constructor(props){
@@ -27,17 +28,25 @@ class Discovery extends React.Component{
         const Discovery = (
             <div className="Discovery">
                 <h1>Discover Components</h1>
+
+                <section>
+                    <h1>SVG</h1>
+                    <SVG />
+                </section>
+
                 <section>
                     <h1>PoyoyoBox</h1>
                     <PoyoyoBox />
                 </section>
+
                 <section>
                     <h1>Button</h1>
                     <Button />
                 </section>
+
                 <section>
                     <h1>Door</h1>
-                    <Door />
+                    <Door style={{height: "200px"}} />
                 </section>
             </div>
         )

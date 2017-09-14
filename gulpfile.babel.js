@@ -1,5 +1,6 @@
 // set entry point js file name
-const rootJsFileName = "App.js"
+// const rootJsFileName = "App.js"
+const rootJsFileName = "index.js"
 
 import gulp from "gulp"
 import babel from "gulp-babel"
